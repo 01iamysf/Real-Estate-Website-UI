@@ -6,7 +6,7 @@
   "use strict";
 
   /* ---------- Footer year ---------- */
-  document.getElementById("year").textContent = String(new Date().getFullYear());
+  document.getElementById("year").textContent = String(new Date().getFullYear()); 
 
   /* ---------- Navbar scroll state ---------- */
   var navbar = document.getElementById("navbar");
