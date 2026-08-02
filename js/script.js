@@ -10,7 +10,7 @@
 
   /* ---------- Navbar scroll state ---------- */
   var navbar = document.getElementById("navbar");
-  var onScroll = function () {
+  var onScroll = function () { 
     navbar.classList.toggle("nav--scrolled", window.scrollY > 40);
   }; 
   onScroll();
