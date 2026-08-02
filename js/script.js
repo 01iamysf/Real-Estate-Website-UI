@@ -12,7 +12,7 @@
   var navbar = document.getElementById("navbar");
   var onScroll = function () {
     navbar.classList.toggle("nav--scrolled", window.scrollY > 40);
-  };
+  }; 
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
