@@ -755,6 +755,11 @@ button {
   animation: fadeUp 0.5s ease both;
 }
 
+.form__success.form__success--error {
+  border-color: #9c3d2e;
+  background: rgba(156, 61, 46, 0.08);
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;
