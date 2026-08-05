@@ -12,17 +12,12 @@
   <!-- ======= NAVBAR ======= -->
   <header class="nav" id="navbar">
     <div class="nav__inner container">
-      <a href="#home" class="brand" aria-label="Meridian and Company home">
-        <span class="brand__name">Meridian &amp; Co.</span>
-        <span class="brand__tag">Estate Brokerage</span>
+      <a href="#home" class="brand" aria-label="Home">
+        <span class="brand__name" id="brandName">Meridian &amp; Co.</span>
+        <span class="brand__tag" id="brandTag">Estate Brokerage</span>
       </a>
 
-      <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="#properties" class="nav__link">Properties</a>
-        <a href="#about" class="nav__link">The Firm</a>
-        <a href="#testimonials" class="nav__link">Testimonials</a>
-        <a href="#contact" class="nav__link nav__link--cta">Book a Tour</a>
-      </nav>
+      <nav class="nav__links" id="navLinks" aria-label="Primary"></nav>
 
       <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
         <span class="nav__toggle-bar"></span>
@@ -34,28 +29,19 @@
   <!-- ======= HERO ======= -->
   <section class="hero" id="home">
     <div class="hero__media">
-      <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80" alt="Luxury estate at dusk" />
+      <img id="heroImage" src="" alt="Luxury estate at dusk" />
       <div class="hero__scrim"></div>
     </div>
 
     <div class="hero__content container">
-      <p class="overline hero__overline reveal">Est. 1998 &nbsp;·&nbsp; Private Brokerage</p>
-      <h1 class="hero__title reveal">
-        Homes Beyond<br />
-        <em>Ordinary</em>
-      </h1>
-      <p class="hero__lede reveal">
-        Meridian &amp; Co. curates a private collection of extraordinary
-        residences — matched to the people who will call them home.
-      </p>
-      <div class="hero__actions reveal">
-        <a href="#properties" class="btn btn--solid">Explore the Collection</a>
-        <a href="#contact" class="btn btn--ghost">Speak with an Advisor</a>
-      </div>
+      <p class="overline hero__overline reveal" id="heroOverline"></p>
+      <h1 class="hero__title reveal" id="heroTitle"></h1>
+      <p class="hero__lede reveal" id="heroLede"></p>
+      <div class="hero__actions reveal" id="heroActions"></div>
     </div>
 
     <div class="hero__meta container">
-      <span>Current Portfolio — 48 residences</span>
+      <span id="heroMeta"></span>
       <span class="hero__scroll">Scroll <span class="hero__scroll-line"></span></span>
     </div>
   </section>
@@ -66,146 +52,21 @@
     <section class="section" id="properties">
       <div class="container">
         <header class="section-head reveal">
-          <p class="overline">01 — The Collection</p>
+          <p class="overline" id="propertiesOverline"></p>
           <div class="section-head__row">
-            <h2 class="section-head__title">Featured Properties</h2>
-            <p class="section-head__note">Six residences, curated from six thousand. Each one vetted, each one singular.</p>
+            <h2 class="section-head__title" id="propertiesTitle"></h2>
+            <p class="section-head__note" id="propertiesNote"></p>
           </div>
         </header>
 
-        <div class="grid">
-          <article class="card reveal">
-            <figure class="card__media">
-              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80" alt="Villa Lumiere exterior with pool" loading="lazy" />
-              <span class="card__status">Signature</span>
-            </figure>
-            <div class="card__body">
-              <p class="card__loc">Palm Crest, California</p>
-              <h3 class="card__name">Villa Lumiere</h3>
-              <p class="card__price">$12,500,000</p>
-              <ul class="card__facts">
-                <li>6 Beds</li>
-                <li>8 Baths</li>
-                <li>12,400 sq ft</li>
-              </ul>
-              <a href="#contact" class="card__link">Request private viewing</a>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <figure class="card__media">
-              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="The Meridian House" loading="lazy" />
-              <span class="card__status">New</span>
-            </figure>
-            <div class="card__body">
-              <p class="card__loc">Greenwich, Connecticut</p>
-              <h3 class="card__name">The Meridian House</h3>
-              <p class="card__price">$8,900,000</p>
-              <ul class="card__facts">
-                <li>5 Beds</li>
-                <li>6 Baths</li>
-                <li>9,200 sq ft</li>
-              </ul>
-              <a href="#contact" class="card__link">Request private viewing</a>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <figure class="card__media">
-              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="Stone and Cedar Estate in the mountains" loading="lazy" />
-              <span class="card__status">Private</span>
-            </figure>
-            <div class="card__body">
-              <p class="card__loc">Aspen, Colorado</p>
-              <h3 class="card__name">Stone &amp; Cedar Estate</h3>
-              <p class="card__price">$15,750,000</p>
-              <ul class="card__facts">
-                <li>7 Beds</li>
-                <li>9 Baths</li>
-                <li>14,800 sq ft</li>
-              </ul>
-              <a href="#contact" class="card__link">Request private viewing</a>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <figure class="card__media">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Observatory Penthouse interior" loading="lazy" />
-              <span class="card__status">Featured</span>
-            </figure>
-            <div class="card__body">
-              <p class="card__loc">Manhattan, New York</p>
-              <h3 class="card__name">Observatory Penthouse</h3>
-              <p class="card__price">$22,000,000</p>
-              <ul class="card__facts">
-                <li>4 Beds</li>
-                <li>5 Baths</li>
-                <li>7,100 sq ft</li>
-              </ul>
-              <a href="#contact" class="card__link">Request private viewing</a>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <figure class="card__media">
-              <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=80" alt="Serene Courtyard Home" loading="lazy" />
-              <span class="card__status">New</span>
-            </figure>
-            <div class="card__body">
-              <p class="card__loc">Scottsdale, Arizona</p>
-              <h3 class="card__name">Serene Courtyard Home</h3>
-              <p class="card__price">$4,250,000</p>
-              <ul class="card__facts">
-                <li>4 Beds</li>
-                <li>4 Baths</li>
-                <li>5,600 sq ft</li>
-              </ul>
-              <a href="#contact" class="card__link">Request private viewing</a>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <figure class="card__media">
-              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80" alt="Glasshouse on the Bay" loading="lazy" />
-              <span class="card__status">Signature</span>
-            </figure>
-            <div class="card__body">
-              <p class="card__loc">Malibu, California</p>
-              <h3 class="card__name">Glasshouse on the Bay</h3>
-              <p class="card__price">$19,800,000</p>
-              <ul class="card__facts">
-                <li>5 Beds</li>
-                <li>7 Baths</li>
-                <li>10,300 sq ft</li>
-              </ul>
-              <a href="#contact" class="card__link">Request private viewing</a>
-            </div>
-          </article>
-        </div>
+        <div class="grid" id="propertiesGrid"></div>
       </div>
     </section>
 
     <!-- ======= STATS ======= -->
     <section class="stats">
       <div class="container">
-        <div class="stats__grid">
-          <div class="stat reveal">
-            <span class="stat__num" data-count="27">0</span>
-            <span class="stat__label">Years of Practice</span>
-          </div>
-          <div class="stat reveal">
-            <span class="stat__num" data-count="1400">0</span>
-            <span class="stat__label">Homes Placed</span>
-          </div>
-          <div class="stat reveal">
-            <span class="stat__num" data-count="98">0</span>
-            <span class="stat__label">Percent Client Satisfaction</span>
-          </div>
-          <div class="stat reveal">
-            <span class="stat__num" data-count="41">0</span>
-            <span class="stat__label">Industry Awards</span>
-          </div>
-        </div>
+        <div class="stats__grid" id="statsGrid"></div>
       </div>
     </section>
 
@@ -214,23 +75,16 @@
       <div class="container">
         <div class="about">
           <div class="about__text reveal">
-            <p class="overline">02 — The Firm</p>
-            <h2 class="section-head__title">A quieter way<br />to buy a <em>home</em>.</h2>
-            <p class="about__body">
-              For over a quarter century, Meridian &amp; Co. has represented
-              a deliberately small number of residences and clients. No
-              volume. No noise. Only discretion, taste, and a standard we
-              refuse to compromise.
-            </p>
-            <blockquote class="about__quote">
-              "The finest homes are never listed. They are spoken of."
-            </blockquote>
-            <a href="#contact" class="btn btn--solid">Meet Our Advisors</a>
+            <p class="overline" id="aboutOverline"></p>
+            <h2 class="section-head__title" id="aboutTitle"></h2>
+            <p class="about__body" id="aboutBody"></p>
+            <blockquote class="about__quote" id="aboutQuote"></blockquote>
+            <div id="aboutActions"></div>
           </div>
 
           <div class="about__media reveal">
-            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=80" alt="Elegant interior with tall ceilings" loading="lazy" />
-            <p class="about__caption">The drawing room at Villa Lumiere, our 2019 Collection.</p>
+            <img id="aboutImage" src="" alt="" loading="lazy" />
+            <p class="about__caption" id="aboutCaption"></p>
           </div>
         </div>
       </div>
@@ -240,46 +94,13 @@
     <section class="section" id="testimonials">
       <div class="container">
         <header class="section-head reveal">
-          <p class="overline">03 — In Their Words</p>
+          <p class="overline" id="testimonialsOverline"></p>
           <div class="section-head__row">
-            <h2 class="section-head__title">Testimonials</h2>
+            <h2 class="section-head__title" id="testimonialsTitle"></h2>
           </div>
         </header>
 
-        <div class="testimonials">
-          <figure class="testimonial reveal">
-            <blockquote class="testimonial__quote">
-              They understood the house before we did. Three showings,
-              one signature — and a home we will keep for a lifetime.
-            </blockquote>
-            <figcaption class="testimonial__author">
-              <span class="testimonial__name">Eleanor &amp; Marcus Hale</span>
-              <span class="testimonial__role">Purchased · Villa Lumiere, California</span>
-            </figcaption>
-          </figure>
-
-          <figure class="testimonial testimonial--alt reveal">
-            <blockquote class="testimonial__quote">
-              Discreet, exacting, and entirely without pressure. Meridian
-              turned a daunting search into a pleasure.
-            </blockquote>
-            <figcaption class="testimonial__author">
-              <span class="testimonial__name">James Whitfield</span>
-              <span class="testimonial__role">Purchased · Observatory Penthouse, New York</span>
-            </figcaption>
-          </figure>
-
-          <figure class="testimonial reveal">
-            <blockquote class="testimonial__quote">
-              They sold our family estate for a sum we considered
-              impossible — quietly, and on our timetable.
-            </blockquote>
-            <figcaption class="testimonial__author">
-              <span class="testimonial__name">The Cavendish Family</span>
-              <span class="testimonial__role">Sold · The Meridian House, Connecticut</span>
-            </figcaption>
-          </figure>
-        </div>
+        <div class="testimonials" id="testimonialsGrid"></div>
       </div>
     </section>
 
@@ -287,19 +108,19 @@
     <section class="section section--alt section--contact" id="contact">
       <div class="container">
         <header class="section-head reveal">
-          <p class="overline">04 — Enquiries</p>
+          <p class="overline" id="contactOverline"></p>
           <div class="section-head__row">
-            <h2 class="section-head__title">Begin the conversation</h2>
-            <p class="section-head__note">All enquiries are treated with complete discretion.</p>
+            <h2 class="section-head__title" id="contactTitle"></h2>
+            <p class="section-head__note" id="contactNote"></p>
           </div>
         </header>
 
         <div class="contact">
           <div class="contact__info reveal">
-            <p class="contact__line"><span class="contact__label">By appointment</span> 415 · 555 · 0148</p>
-            <p class="contact__line"><span class="contact__label">Correspondence</span> private@meridianandco.com</p>
-            <p class="contact__line"><span class="contact__label">The office</span> 1200 Montgomery Street<br />San Francisco, California</p>
-            <p class="contact__hours">Monday — Saturday · 9am to 6pm</p>
+            <p class="contact__line"><span class="contact__label">By appointment</span> <a id="contactPhone"></a></p>
+            <p class="contact__line"><span class="contact__label">Correspondence</span> <a id="contactEmail"></a></p>
+            <p class="contact__line"><span class="contact__label">The office</span> <span id="contactAddress"></span></p>
+            <p class="contact__hours" id="contactHours"></p>
           </div>
 
           <form class="form reveal" id="contactForm" novalidate>
@@ -328,10 +149,8 @@
               <p class="form__error" data-error="message"></p>
             </div>
 
-            <button class="btn btn--solid" type="submit">Send Enquiry</button>
-            <p class="form__success" id="formSuccess" role="status">
-              Thank you. Your enquiry has been received — our advisors will be in touch within one business day.
-            </p>
+            <button class="btn btn--solid" type="submit" id="formSubmit">Send Enquiry</button>
+            <p class="form__success" id="formStatus" role="status"></p>
           </form>
         </div>
       </div>
@@ -343,31 +162,20 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <span class="brand__name">Meridian &amp; Co.</span>
-          <span class="brand__tag">Estate Brokerage</span>
-          <p class="footer__note">Cultivating exceptional homes and the people who live in them since 1998.</p>
+          <span class="brand__name" id="footerBrandName"></span>
+          <span class="brand__tag" id="footerBrandTag"></span>
+          <p class="footer__note" id="footerNote"></p>
         </div>
-        <div class="footer__col">
-          <h4 class="footer__heading">Explore</h4>
-          <a href="#properties" class="footer__link">The Collection</a>
-          <a href="#about" class="footer__link">The Firm</a>
-          <a href="#testimonials" class="footer__link">Testimonials</a>
-          <a href="#contact" class="footer__link">Book a Tour</a>
-        </div>
-        <div class="footer__col">
-          <h4 class="footer__heading">Contact</h4>
-          <a href="tel:+14155550148" class="footer__link">415 · 555 · 0148</a>
-          <a href="mailto:private@meridianandco.com" class="footer__link">private@meridianandco.com</a>
-          <span class="footer__link footer__link--flat">1200 Montgomery Street, San Francisco</span>
-        </div>
+        <div id="footerColumns"></div>
       </div>
       <div class="footer__base">
-        <p>© <span id="year">2026</span> Meridian &amp; Co. Estate Brokerage. All rights reserved.</p>
-        <p>Photography courtesy of Unsplash.</p>
+        <p>© <span id="year">2026</span> <span id="footerBrandBase"></span>. All rights reserved.</p>
+        <p>Photography courtesy of Unsplash. · <a href="admin.html" class="footer__link">Site Manager</a></p>
       </div>
     </div>
   </footer>
 
+  <script src="config.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
