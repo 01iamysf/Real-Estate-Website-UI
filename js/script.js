@@ -284,6 +284,23 @@
     var priceVal = priceEl ? priceEl.value : "all";
     var sortVal = sortEl ? sortEl.value : "default";
 
+    // Toggle reset button visibility
+    var resetBtn = document.getElementById("btnResetFilters");
+    if (resetBtn) {
+      var hasActiveFilters = (
+        searchVal !== "" ||
+        locVal !== "all" ||
+        bedsVal !== "all" ||
+        priceVal !== "all" ||
+        sortVal !== "default"
+      );
+      if (hasActiveFilters) {
+        resetBtn.style.display = "inline-block";
+      } else {
+        resetBtn.style.display = "none";
+      }
+    }
+
     // 2. Filter properties based on user options
     var items = (cfg.properties && cfg.properties.items) || [];
     var filtered = items.filter(function (item) {
