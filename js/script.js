@@ -34,8 +34,8 @@
       items: [
         {
           name: "Villa Lumiere",
-          location: "Palm Crest, California",
-          price: "$12,500,000",
+          location: "Gomti Nagar Extension, Lucknow",
+          price: "₹12.5 Crores",
           beds: 6,
           baths: 8,
           sqft: 12400,
@@ -45,8 +45,8 @@
         },
         {
           name: "The Meridian House",
-          location: "Greenwich, Connecticut",
-          price: "$8,900,000",
+          location: "Hazratganj, Lucknow",
+          price: "₹8.9 Crores",
           beds: 5,
           baths: 6,
           sqft: 9200,
@@ -56,8 +56,8 @@
         },
         {
           name: "Stone & Cedar Estate",
-          location: "Aspen, Colorado",
-          price: "$15,750,000",
+          location: "Mussoorie, Uttarakhand",
+          price: "₹15.75 Crores",
           beds: 7,
           baths: 9,
           sqft: 14800,
@@ -67,8 +67,8 @@
         },
         {
           name: "Observatory Penthouse",
-          location: "Manhattan, New York",
-          price: "$22,000,000",
+          location: "Sushant Golf City, Lucknow",
+          price: "₹22.0 Crores",
           beds: 4,
           baths: 5,
           sqft: 7100,
@@ -78,8 +78,8 @@
         },
         {
           name: "Serene Courtyard Home",
-          location: "Scottsdale, Arizona",
-          price: "$4,250,000",
+          location: "Kursi Road, Lucknow",
+          price: "₹4.25 Crores",
           beds: 4,
           baths: 4,
           sqft: 5600,
@@ -89,8 +89,8 @@
         },
         {
           name: "Glasshouse on the Bay",
-          location: "Malibu, California",
-          price: "$19,800,000",
+          location: "Candolim, Goa",
+          price: "₹19.8 Crores",
           beds: 5,
           baths: 7,
           sqft: 10300,
@@ -122,18 +122,18 @@
         {
           quote: "They understood the house before we did. Three showings, one signature — and a home we will keep for a lifetime.",
           name: "Eleanor & Marcus Hale",
-          role: "Purchased · Villa Lumiere, California"
+          role: "Purchased · Villa Lumiere, Gomti Nagar"
         },
         {
           quote: "Discreet, exacting, and entirely without pressure. Meridian turned a daunting search into a pleasure.",
           name: "James Whitfield",
-          role: "Purchased · Observatory Penthouse, New York",
+          role: "Purchased · Observatory Penthouse, Sushant Golf City",
           alt: true
         },
         {
           quote: "They sold our family estate for a sum we considered impossible — quietly, and on our timetable.",
           name: "The Cavendish Family",
-          role: "Sold · The Meridian House, Connecticut"
+          role: "Sold · The Meridian House, Hazratganj"
         }
       ]
     },
@@ -141,10 +141,10 @@
       overline: "04 — Enquiries",
       title: "Begin the conversation",
       note: "All enquiries are treated with complete discretion.",
-      phone: "415 · 555 · 0148",
-      phoneHref: "tel:+14155550148",
-      email: "private@meridianandco.com",
-      address: ["1200 Montgomery Street", "San Francisco, California"],
+      phone: "+91 522 2890730",
+      phoneHref: "tel:+915222890730",
+      email: "info@iul.ac.in",
+      address: ["Kursi Road, Dasauli", "Lucknow, Uttar Pradesh 226026"],
       hours: "Monday — Saturday · 9am to 6pm",
       form: {
         endpoint: "",
@@ -172,10 +172,10 @@
         {
           heading: "Contact",
           links: [
-            { href: "tel:+14155550148", label: "415 · 555 · 0148" },
-            { href: "mailto:private@meridianandco.com", label: "private@meridianandco.com" }
+            { href: "tel:+915222890730", label: "+91 522 2890730" },
+            { href: "mailto:info@iul.ac.in", label: "info@iul.ac.in" }
           ],
-          flat: ["1200 Montgomery Street, San Francisco"]
+          flat: ["Kursi Road, Dasauli, Lucknow"]
         }
       ]
     }
