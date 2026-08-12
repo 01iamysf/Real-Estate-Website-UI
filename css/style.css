@@ -492,6 +492,7 @@ button {
 }
 
 .filters__reset {
+  display: none;
   font-family: var(--serif);
   font-size: 0.72rem;
   letter-spacing: 0.20em;
