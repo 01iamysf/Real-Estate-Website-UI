@@ -365,6 +365,24 @@
     yearEl.textContent = String(new Date().getFullYear());
   }
 
+  // Parse URL parameters on page load for ad campaigns (e.g. ?location=goa)
+  var urlParams = new URLSearchParams(window.location.search);
+  var locationParam = urlParams.get('location');
+  var typeParam = urlParams.get('type');
+
+  if (locationParam) {
+    var locSelect = document.getElementById("filterLocation");
+    if (locSelect) {
+      locSelect.value = locationParam;
+    }
+  }
+  if (typeParam) {
+    var typeSelect = document.getElementById("filterType");
+    if (typeSelect) {
+      typeSelect.value = typeParam;
+    }
+  }
+
   // Start executing rendering
   renderFilteredLands();
   setupLandFilters();
