@@ -178,9 +178,9 @@
     ],
     about: {
       overline: "02 — The Firm",
-      title: "A quieter way<br />to buy a <em>home</em>.",
-      body: "For over a quarter century, Meridian &amp; Co. has represented a deliberately small number of residences and clients. No volume. No noise. Only discretion, taste, and a standard we refuse to compromise.",
-      quote: "The finest homes are never listed. They are spoken of.",
+      title: "A quieter way<br />to buy a <em>home</em> or <em>land</em>.",
+      body: "For over a quarter century, Meridian &amp; Co. has represented a deliberately small number of residences, land plots, and clients. No volume. No noise. Only discretion, taste, and a standard we refuse to compromise.",
+      quote: "The finest properties are never listed. They are spoken of.",
       button: "Meet Our Advisors",
       image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=80",
       caption: "The drawing room at Villa Lumiere, our 2019 Collection."
