@@ -59,6 +59,51 @@
           </div>
         </header>
 
+        <!-- ======= PROPERTY FILTERS ======= -->
+        <div class="filters reveal">
+          <div class="filters__group">
+            <div class="filters__search">
+              <input type="text" id="filterSearch" placeholder="Search by name or location..." aria-label="Search properties" />
+              <svg class="filters__search-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.5" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+            
+            <div class="filters__select-wrapper">
+              <select id="filterLocation" aria-label="Filter by Location">
+                <option value="all">All Locations</option>
+                <option value="lucknow">Lucknow</option>
+                <option value="goa">Goa</option>
+                <option value="uttarakhand">Uttarakhand</option>
+              </select>
+            </div>
+
+            <div class="filters__select-wrapper">
+              <select id="filterBeds" aria-label="Filter by Beds">
+                <option value="all">All Bedrooms</option>
+                <option value="4">4+ Beds</option>
+                <option value="5">5+ Beds</option>
+                <option value="6">6+ Beds</option>
+              </select>
+            </div>
+
+            <div class="filters__select-wrapper">
+              <select id="filterPrice" aria-label="Filter by Price">
+                <option value="all">All Prices</option>
+                <option value="under10">Under ₹10 Crores</option>
+                <option value="10to20">₹10 - ₹20 Crores</option>
+                <option value="above20">Above ₹20 Crores</option>
+              </select>
+            </div>
+            
+            <div class="filters__select-wrapper">
+              <select id="sortOrder" aria-label="Sort Properties">
+                <option value="default">Default Sort</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
         <div class="grid" id="propertiesGrid"></div>
       </div>
     </section>

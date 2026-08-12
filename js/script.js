@@ -200,6 +200,115 @@
     return a;
   }
 
+  /* ---------- Filter properties function ---------- */
+  function renderFilteredProperties() {
+    var searchVal = document.getElementById("filterSearch").value.toLowerCase().trim();
+    var locVal = document.getElementById("filterLocation").value;
+    var bedsVal = document.getElementById("filterBeds").value;
+    var priceVal = document.getElementById("filterPrice").value;
+    var sortVal = document.getElementById("sortOrder").value;
+
+    var items = (cfg.properties && cfg.properties.items) || [];
+    var filtered = items.filter(function (item) {
+      // 1. Search search query
+      if (searchVal) {
+        var nameMatch = item.name.toLowerCase().indexOf(searchVal) > -1;
+        var locMatch = item.location.toLowerCase().indexOf(searchVal) > -1;
+        if (!nameMatch && !locMatch) return false;
+      }
+      // 2. Location filter
+      if (locVal !== "all") {
+        var locLower = item.location.toLowerCase();
+        if (locLower.indexOf(locVal) === -1) return false;
+      }
+      // 3. BHK/Beds filter
+      if (bedsVal !== "all") {
+        var minBeds = parseInt(bedsVal, 10);
+        if (item.beds < minBeds) return false;
+      }
+      // 4. Price filter
+      if (priceVal !== "all") {
+        var numericPrice = parseFloat(item.price.replace(/[^\d.]/g, ""));
+        if (priceVal === "under10") {
+          if (numericPrice >= 10) return false;
+        } else if (priceVal === "10to20") {
+          if (numericPrice < 10 || numericPrice > 20) return false;
+        } else if (priceVal === "above20") {
+          if (numericPrice <= 20) return false;
+        }
+      }
+      return true;
+    });
+
+    // Sort order
+    if (sortVal === "price-asc") {
+      filtered.sort(function (a, b) {
+        var priceA = parseFloat(a.price.replace(/[^\d.]/g, ""));
+        var priceB = parseFloat(b.price.replace(/[^\d.]/g, ""));
+        return priceA - priceB;
+      });
+    } else if (sortVal === "price-desc") {
+      filtered.sort(function (a, b) {
+        var priceA = parseFloat(a.price.replace(/[^\d.]/g, ""));
+        var priceB = parseFloat(b.price.replace(/[^\d.]/g, ""));
+        return priceB - priceA;
+      });
+    }
+
+    var grid = document.getElementById("propertiesGrid");
+    if (!grid) return;
+    grid.innerHTML = "";
+
+    if (filtered.length === 0) {
+      var emptyMsg = makeEl("div", "properties__empty", "No properties match your current filters.");
+      grid.appendChild(emptyMsg);
+      return;
+    }
+
+    filtered.forEach(function (item, i) {
+      var card = makeEl("article", "card reveal");
+      card.innerHTML =
+        '<figure class="card__media">' +
+        '<img src="' + item.image + '" alt="' + item.alt + '" loading="lazy" />' +
+        '<span class="card__status">' + item.status + "</span>" +
+        "</figure>" +
+        '<div class="card__body">' +
+        '<p class="card__loc">' + item.location + "</p>" +
+        '<h3 class="card__name">' + item.name + "</h3>" +
+        '<p class="card__price">' + item.price + "</p>" +
+        '<ul class="card__facts">' +
+        "<li>" + item.beds + " Beds</li>" +
+        "<li>" + item.baths + " Baths</li>" +
+        "<li>" + item.sqft.toLocaleString("en-US") + " sq ft</li>" +
+        "</ul>" +
+        '<a href="#contact" class="card__link">Request private viewing</a>' +
+        "</div>";
+      grid.appendChild(card);
+      
+      // Staggered reveal animation
+      card.style.setProperty("--d", (i % 6) * 0.05 + "s");
+      setTimeout(function () {
+        card.classList.add("is-visible");
+      }, 50);
+    });
+  }
+
+  function setupFilters() {
+    var searchInput = document.getElementById("filterSearch");
+    var locSelect = document.getElementById("filterLocation");
+    var bedsSelect = document.getElementById("filterBeds");
+    var priceSelect = document.getElementById("filterPrice");
+    var sortSelect = document.getElementById("sortOrder");
+
+    if (searchInput) {
+      searchInput.addEventListener("input", renderFilteredProperties);
+      locSelect.addEventListener("change", renderFilteredProperties);
+      bedsSelect.addEventListener("change", renderFilteredProperties);
+      priceSelect.addEventListener("change", renderFilteredProperties);
+      sortSelect.addEventListener("change", renderFilteredProperties);
+    }
+  }
+
   /* ---------- Render site from config ---------- */
   function renderSite() {
     if (!cfg.brand) return;
@@ -250,29 +359,8 @@
       fill("propertiesOverline", p.overline);
       fill("propertiesTitle", p.title);
       fill("propertiesNote", p.note);
-      var grid = document.getElementById("propertiesGrid");
-      if (grid) {
-        (p.items || []).forEach(function (item) {
-          var card = makeEl("article", "card reveal");
-          card.innerHTML =
-            '<figure class="card__media">' +
-            '<img src="' + item.image + '" alt="' + item.alt + '" loading="lazy" />' +
-            '<span class="card__status">' + item.status + "</span>" +
-            "</figure>" +
-            '<div class="card__body">' +
-            '<p class="card__loc">' + item.location + "</p>" +
-            '<h3 class="card__name">' + item.name + "</h3>" +
-            '<p class="card__price">' + item.price + "</p>" +
-            '<ul class="card__facts">' +
-            "<li>" + item.beds + " Beds</li>" +
-            "<li>" + item.baths + " Baths</li>" +
-            "<li>" + item.sqft.toLocaleString("en-US") + " sq ft</li>" +
-            "</ul>" +
-            '<a href="#contact" class="card__link">Request private viewing</a>' +
-            "</div>";
-          grid.appendChild(card);
-        });
-      }
+      renderFilteredProperties();
+      setupFilters();
     }
 
     /* Stats */
