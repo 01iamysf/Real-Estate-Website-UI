@@ -143,7 +143,7 @@
       note: "All enquiries are treated with complete discretion.",
       phone: "+91 522 2890730",
       phoneHref: "tel:+915222890730",
-      email: "info@iul.ac.in",
+      email: "contact@meridianandco.in",
       address: ["Kursi Road, Dasauli", "Lucknow, Uttar Pradesh 226026"],
       hours: "Monday — Saturday · 9am to 6pm",
       form: {
@@ -173,7 +173,7 @@
           heading: "Contact",
           links: [
             { href: "tel:+915222890730", label: "+91 522 2890730" },
-            { href: "mailto:info@iul.ac.in", label: "info@iul.ac.in" }
+            { href: "mailto:contact@meridianandco.in", label: "contact@meridianandco.in" }
           ],
           flat: ["Kursi Road, Dasauli, Lucknow"]
         }
