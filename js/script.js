@@ -409,9 +409,13 @@
         paginationContainer.innerHTML = "";
       } else {
         paginationContainer.innerHTML =
-          '<button type="button" id="btnPrevPage" class="pagination__btn"' + (currentPage === 1 ? ' disabled' : '') + '>Previous</button>' +
-          '<span class="pagination__info">Page ' + currentPage + ' of ' + totalPages + '</span>' +
-          '<button type="button" id="btnNextPage" class="pagination__btn"' + (currentPage === totalPages ? ' disabled' : '') + '>Next</button>';
+          '<button type="button" id="btnPrevPage" class="pagination__btn pagination__btn--prev"' + (currentPage === 1 ? ' disabled' : '') + '>' +
+            '<span class="pagination__arrow">←</span> Previous Collection' +
+          '</button>' +
+          '<span class="pagination__info">' + currentPage + ' &nbsp;/&nbsp; ' + totalPages + '</span>' +
+          '<button type="button" id="btnNextPage" class="pagination__btn pagination__btn--next"' + (currentPage === totalPages ? ' disabled' : '') + '>' +
+            'Next Collection <span class="pagination__arrow">→</span>' +
+          '</button>';
 
         // Get buttons and add clicks
         var prevBtn = document.getElementById("btnPrevPage");
