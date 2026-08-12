@@ -202,11 +202,17 @@
 
   /* ---------- Filter properties function ---------- */
   function renderFilteredProperties() {
-    var searchVal = document.getElementById("filterSearch").value.toLowerCase().trim();
-    var locVal = document.getElementById("filterLocation").value;
-    var bedsVal = document.getElementById("filterBeds").value;
-    var priceVal = document.getElementById("filterPrice").value;
-    var sortVal = document.getElementById("sortOrder").value;
+    var searchEl = document.getElementById("filterSearch");
+    var locEl = document.getElementById("filterLocation");
+    var bedsEl = document.getElementById("filterBeds");
+    var priceEl = document.getElementById("filterPrice");
+    var sortEl = document.getElementById("sortOrder");
+
+    var searchVal = searchEl ? searchEl.value.toLowerCase().trim() : "";
+    var locVal = locEl ? locEl.value : "all";
+    var bedsVal = bedsEl ? bedsEl.value : "all";
+    var priceVal = priceEl ? priceEl.value : "all";
+    var sortVal = sortEl ? sortEl.value : "default";
 
     var items = (cfg.properties && cfg.properties.items) || [];
     var filtered = items.filter(function (item) {
@@ -300,13 +306,11 @@
     var priceSelect = document.getElementById("filterPrice");
     var sortSelect = document.getElementById("sortOrder");
 
-    if (searchInput) {
-      searchInput.addEventListener("input", renderFilteredProperties);
-      locSelect.addEventListener("change", renderFilteredProperties);
-      bedsSelect.addEventListener("change", renderFilteredProperties);
-      priceSelect.addEventListener("change", renderFilteredProperties);
-      sortSelect.addEventListener("change", renderFilteredProperties);
-    }
+    if (searchInput) searchInput.addEventListener("input", renderFilteredProperties);
+    if (locSelect) locSelect.addEventListener("change", renderFilteredProperties);
+    if (bedsSelect) bedsSelect.addEventListener("change", renderFilteredProperties);
+    if (priceSelect) priceSelect.addEventListener("change", renderFilteredProperties);
+    if (sortSelect) sortSelect.addEventListener("change", renderFilteredProperties);
   }
 
   /* ---------- Render site from config ---------- */
