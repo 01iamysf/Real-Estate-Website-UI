@@ -544,6 +544,26 @@
       fill("propertiesOverline", p.overline);
       fill("propertiesTitle", p.title);
       fill("propertiesNote", p.note);
+
+      // Parse URL parameters on page load for dynamic ad landing pages (e.g. ?location=lucknow)
+      var urlParams = new URLSearchParams(window.location.search);
+      var locationParam = urlParams.get('location');
+      var bedsParam = urlParams.get('beds');
+      var priceParam = urlParams.get('price');
+
+      if (locationParam) {
+        var locSelect = document.getElementById("filterLocation");
+        if (locSelect) locSelect.value = locationParam;
+      }
+      if (bedsParam) {
+        var bedsSelect = document.getElementById("filterBeds");
+        if (bedsSelect) bedsSelect.value = bedsParam;
+      }
+      if (priceParam) {
+        var priceSelect = document.getElementById("filterPrice");
+        if (priceSelect) priceSelect.value = priceParam;
+      }
+
       renderFilteredProperties();
       setupFilters();
     }
