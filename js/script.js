@@ -271,6 +271,7 @@
 
   /* ---------- Filter properties function ---------- */
   function renderFilteredProperties() {
+    // 1. Get the values that the user typed or selected in the filters
     var searchEl = document.getElementById("filterSearch");
     var locEl = document.getElementById("filterLocation");
     var bedsEl = document.getElementById("filterBeds");
@@ -283,25 +284,32 @@
     var priceVal = priceEl ? priceEl.value : "all";
     var sortVal = sortEl ? sortEl.value : "default";
 
+    // 2. Filter properties based on user options
     var items = (cfg.properties && cfg.properties.items) || [];
     var filtered = items.filter(function (item) {
-      // 1. Search search query
+      // Search Box Filter
       if (searchVal) {
         var nameMatch = item.name.toLowerCase().indexOf(searchVal) > -1;
         var locMatch = item.location.toLowerCase().indexOf(searchVal) > -1;
-        if (!nameMatch && !locMatch) return false;
+        if (nameMatch === false && locMatch === false) {
+          return false;
+        }
       }
-      // 2. Location filter
+      // Location Filter
       if (locVal !== "all") {
         var locLower = item.location.toLowerCase();
-        if (locLower.indexOf(locVal) === -1) return false;
+        if (locLower.indexOf(locVal) === -1) {
+          return false;
+        }
       }
-      // 3. BHK/Beds filter
+      // Beds Filter
       if (bedsVal !== "all") {
         var minBeds = parseInt(bedsVal, 10);
-        if (item.beds < minBeds) return false;
+        if (item.beds < minBeds) {
+          return false;
+        }
       }
-      // 4. Price filter
+      // Price Filter
       if (priceVal !== "all") {
         var numericPrice = parseFloat(item.price.replace(/[^\d.]/g, ""));
         if (priceVal === "under10") {
@@ -315,7 +323,7 @@
       return true;
     });
 
-    // Sort order
+    // 3. Sort properties
     if (sortVal === "price-asc") {
       filtered.sort(function (a, b) {
         var priceA = parseFloat(a.price.replace(/[^\d.]/g, ""));
@@ -330,17 +338,43 @@
       });
     }
 
+    // 4. Calculate total pages (6 items per page)
+    var totalPages = Math.ceil(filtered.length / itemsPerPage);
+    if (totalPages < 1) {
+      totalPages = 1;
+    }
+
+    // Make sure current page is within boundaries
+    if (currentPage > totalPages) {
+      currentPage = totalPages;
+    }
+    if (currentPage < 1) {
+      currentPage = 1;
+    }
+
+    // 5. Get the properties for the current page only
+    var startIndex = (currentPage - 1) * itemsPerPage;
+    var endIndex = startIndex + itemsPerPage;
+    var pageItems = filtered.slice(startIndex, endIndex);
+
+    // 6. Draw properties to the screen
     var grid = document.getElementById("propertiesGrid");
     if (!grid) return;
     grid.innerHTML = "";
 
-    if (filtered.length === 0) {
+    if (pageItems.length === 0) {
       var emptyMsg = makeEl("div", "properties__empty", "No properties match your current filters.");
       grid.appendChild(emptyMsg);
+      
+      // Clear pagination buttons if no items
+      var paginationContainer = document.getElementById("propertiesPagination");
+      if (paginationContainer) {
+        paginationContainer.innerHTML = "";
+      }
       return;
     }
 
-    filtered.forEach(function (item, i) {
+    pageItems.forEach(function (item, i) {
       var card = makeEl("article", "card reveal");
       card.innerHTML =
         '<figure class="card__media">' +
@@ -366,6 +400,42 @@
         card.classList.add("is-visible");
       }, 50);
     });
+
+    // 7. Draw Pagination buttons (Prev, Page 1 of 2, Next)
+    var paginationContainer = document.getElementById("propertiesPagination");
+    if (paginationContainer) {
+      if (filtered.length <= itemsPerPage) {
+        // If all items fit on one page, we don't need buttons
+        paginationContainer.innerHTML = "";
+      } else {
+        paginationContainer.innerHTML =
+          '<button type="button" id="btnPrevPage" class="pagination__btn"' + (currentPage === 1 ? ' disabled' : '') + '>Previous</button>' +
+          '<span class="pagination__info">Page ' + currentPage + ' of ' + totalPages + '</span>' +
+          '<button type="button" id="btnNextPage" class="pagination__btn"' + (currentPage === totalPages ? ' disabled' : '') + '>Next</button>';
+
+        // Get buttons and add clicks
+        var prevBtn = document.getElementById("btnPrevPage");
+        var nextBtn = document.getElementById("btnNextPage");
+
+        if (prevBtn) {
+          prevBtn.addEventListener("click", function () {
+            currentPage--;
+            renderFilteredProperties();
+            var section = document.getElementById("properties");
+            if (section) section.scrollIntoView({ behavior: "smooth" });
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener("click", function () {
+            currentPage++;
+            renderFilteredProperties();
+            var section = document.getElementById("properties");
+            if (section) section.scrollIntoView({ behavior: "smooth" });
+          });
+        }
+      }
+    }
   }
 
   function setupFilters() {
@@ -376,11 +446,17 @@
     var sortSelect = document.getElementById("sortOrder");
     var resetBtn = document.getElementById("btnResetFilters");
 
-    if (searchInput) searchInput.addEventListener("input", renderFilteredProperties);
-    if (locSelect) locSelect.addEventListener("change", renderFilteredProperties);
-    if (bedsSelect) bedsSelect.addEventListener("change", renderFilteredProperties);
-    if (priceSelect) priceSelect.addEventListener("change", renderFilteredProperties);
-    if (sortSelect) sortSelect.addEventListener("change", renderFilteredProperties);
+    // Helper: resets page back to 1 and runs the filter code
+    function handleFilterChange() {
+      currentPage = 1;
+      renderFilteredProperties();
+    }
+
+    if (searchInput) searchInput.addEventListener("input", handleFilterChange);
+    if (locSelect) locSelect.addEventListener("change", handleFilterChange);
+    if (bedsSelect) bedsSelect.addEventListener("change", handleFilterChange);
+    if (priceSelect) priceSelect.addEventListener("change", handleFilterChange);
+    if (sortSelect) sortSelect.addEventListener("change", handleFilterChange);
 
     if (resetBtn) {
       resetBtn.addEventListener("click", function () {
@@ -389,6 +465,7 @@
         if (bedsSelect) bedsSelect.value = "all";
         if (priceSelect) priceSelect.value = "all";
         if (sortSelect) sortSelect.value = "default";
+        currentPage = 1;
         renderFilteredProperties();
       });
     }
