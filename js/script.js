@@ -97,6 +97,72 @@
           status: "Signature",
           image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
           alt: "Glasshouse on the Bay"
+        },
+        {
+          name: "The Grand Horizon Penthouse",
+          location: "Gomti Nagar, Lucknow",
+          price: "₹7.5 Crores",
+          beds: 4,
+          baths: 4,
+          sqft: 4800,
+          status: "Featured",
+          image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
+          alt: "The Grand Horizon Penthouse"
+        },
+        {
+          name: "Whispering Pines Cabin",
+          location: "Nainital, Uttarakhand",
+          price: "₹3.8 Crores",
+          beds: 3,
+          baths: 3,
+          sqft: 3200,
+          status: "New",
+          image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+          alt: "Whispering Pines Cabin"
+        },
+        {
+          name: "Royal Heritage Manor",
+          location: "Hazratganj, Lucknow",
+          price: "₹18.2 Crores",
+          beds: 5,
+          baths: 6,
+          sqft: 9800,
+          status: "Signature",
+          image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=80",
+          alt: "Royal Heritage Manor"
+        },
+        {
+          name: "The Palm Villa",
+          location: "Calangute, Goa",
+          price: "₹14.5 Crores",
+          beds: 5,
+          baths: 5,
+          sqft: 8500,
+          status: "Private",
+          image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=80",
+          alt: "The Palm Villa"
+        },
+        {
+          name: "Golf View Mansion",
+          location: "Sushant Golf City, Lucknow",
+          price: "₹11.2 Crores",
+          beds: 4,
+          baths: 5,
+          sqft: 6700,
+          status: "Featured",
+          image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
+          alt: "Golf View Mansion"
+        },
+        {
+          name: "Misty Heights Estate",
+          location: "Mussoorie, Uttarakhand",
+          price: "₹24.5 Crores",
+          beds: 6,
+          baths: 7,
+          sqft: 11200,
+          status: "Signature",
+          image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+          alt: "Misty Heights Estate"
         }
       ]
     },
