@@ -6,6 +6,9 @@
 (function () {
   "use strict";
 
+  var currentPage = 1;
+  var itemsPerPage = 6;
+
   var cfg = {
     brand: {
       name: "Meridian & Co.",
