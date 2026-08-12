@@ -16,6 +16,7 @@
     },
     nav: [
       { href: "#properties", label: "Properties" },
+      { href: "lands.html", label: "Lands & Plots" },
       { href: "#about", label: "The Firm" },
       { href: "#testimonials", label: "Testimonials" },
       { href: "#contact", label: "Book a Tour", cta: true }
@@ -233,6 +234,7 @@
           heading: "Explore",
           links: [
             { href: "#properties", label: "The Collection" },
+            { href: "lands.html", label: "Lands & Plots" },
             { href: "#about", label: "The Firm" },
             { href: "#testimonials", label: "Testimonials" },
             { href: "#contact", label: "Book a Tour" }
