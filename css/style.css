@@ -491,6 +491,24 @@ button {
   border: 1px dashed var(--line);
 }
 
+.filters__reset {
+  font-family: var(--serif);
+  font-size: 0.72rem;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 0.8rem 1.6rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filters__reset:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
 /* ---------- Property grid ---------- */
 .grid {
   display: grid;
