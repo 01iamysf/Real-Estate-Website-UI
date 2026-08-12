@@ -509,6 +509,44 @@ button {
   border-color: var(--ink);
 }
 
+/* ---------- Property pagination ---------- */
+.pagination {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.pagination__btn {
+  font-family: var(--serif);
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  padding: 0.8rem 1.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination__btn:hover:not(:disabled) {
+  color: var(--bronze-deep);
+  border-color: var(--bronze-deep);
+}
+
+.pagination__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pagination__info {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
 /* ---------- Property grid ---------- */
 .grid {
   display: grid;
