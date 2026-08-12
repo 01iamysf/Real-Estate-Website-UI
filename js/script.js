@@ -305,12 +305,24 @@
     var bedsSelect = document.getElementById("filterBeds");
     var priceSelect = document.getElementById("filterPrice");
     var sortSelect = document.getElementById("sortOrder");
+    var resetBtn = document.getElementById("btnResetFilters");
 
     if (searchInput) searchInput.addEventListener("input", renderFilteredProperties);
     if (locSelect) locSelect.addEventListener("change", renderFilteredProperties);
     if (bedsSelect) bedsSelect.addEventListener("change", renderFilteredProperties);
     if (priceSelect) priceSelect.addEventListener("change", renderFilteredProperties);
     if (sortSelect) sortSelect.addEventListener("change", renderFilteredProperties);
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function () {
+        if (searchInput) searchInput.value = "";
+        if (locSelect) locSelect.value = "all";
+        if (bedsSelect) bedsSelect.value = "all";
+        if (priceSelect) priceSelect.value = "all";
+        if (sortSelect) sortSelect.value = "default";
+        renderFilteredProperties();
+      });
+    }
   }
 
   /* ---------- Render site from config ---------- */
