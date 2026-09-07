@@ -396,25 +396,30 @@
     }
 
     pageItems.forEach(function (item, i) {
+      // Calculate absolute index across all items (for property.html?id=N)
+      var absoluteIndex = (cfg.properties.items || []).indexOf(item);
+      var detailUrl = "property.html?id=" + absoluteIndex;
+
       var card = makeEl("article", "card reveal");
       card.innerHTML =
+        '<a href="' + detailUrl + '" class="card__media-link" aria-label="View ' + item.name + '">' +
         '<figure class="card__media">' +
         '<img src="' + item.image + '" alt="' + item.alt + '" loading="lazy" />' +
         '<span class="card__status">' + item.status + "</span>" +
-        "</figure>" +
+        "</figure></a>" +
         '<div class="card__body">' +
         '<p class="card__loc">' + item.location + "</p>" +
-        '<h3 class="card__name">' + item.name + "</h3>" +
+        '<h3 class="card__name"><a href="' + detailUrl + '" class="card__name-link">' + item.name + "</a></h3>" +
         '<p class="card__price">' + item.price + "</p>" +
         '<ul class="card__facts">' +
         "<li>" + item.beds + " Beds</li>" +
         "<li>" + item.baths + " Baths</li>" +
-        "<li>" + item.sqft.toLocaleString("en-US") + " sq ft</li>" +
+        "<li>" + item.sqft.toLocaleString("en-IN") + " sq ft</li>" +
         "</ul>" +
-        '<a href="#contact" class="card__link">Request private viewing</a>' +
+        '<a href="' + detailUrl + '" class="card__link">View property →</a>' +
         "</div>";
       grid.appendChild(card);
-      
+
       // Staggered reveal animation
       card.style.setProperty("--d", (i % 6) * 0.05 + "s");
       setTimeout(function () {
