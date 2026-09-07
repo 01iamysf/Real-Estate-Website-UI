@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Property Detail — Meridian &amp; Co.</title>
+  <meta name="description" content="Explore this exceptional residence from the Meridian & Co. curated collection." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Meridian &amp; Co." />
+  <meta property="og:title" content="Property Detail — Meridian &amp; Co." id="ogTitle" />
+  <meta property="og:description" content="An exceptional residence from the Meridian &amp; Co. curated collection." />
+
+  <!-- Leaflet CSS (interactive map) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/property.css" />
+</head>
+<body>
+
+  <!-- ======= NAVBAR ======= -->
+  <header class="nav nav--scrolled" id="navbar" style="position: sticky; background: rgba(251,248,241,0.96); backdrop-filter: blur(12px);">
+    <div class="nav__inner container">
+      <a href="index.html" class="brand" aria-label="Home">
+        <span class="brand__name">Meridian &amp; Co.</span>
+        <span class="brand__tag">Estate Brokerage</span>
+      </a>
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="index.html#properties" class="nav__link">Properties</a>
+        <a href="lands.html" class="nav__link">Lands &amp; Plots</a>
+        <a href="guides.html" class="nav__link">Guides</a>
+        <a href="index.html#about" class="nav__link">The Firm</a>
+        <a href="index.html#contact" class="nav__link nav__link--cta">Book a Tour</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======= PROPERTY HERO / GALLERY ======= -->
+    <section class="prop-hero" id="propHero">
+      <!-- Breadcrumb -->
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html" class="breadcrumb__link">Home</a>
+          <span class="breadcrumb__sep">›</span>
+          <a href="index.html#properties" class="breadcrumb__link">Properties</a>
+          <span class="breadcrumb__sep">›</span>
+          <span class="breadcrumb__current" id="breadcrumbName">Loading…</span>
+        </nav>
+      </div>
+
+      <!-- Main gallery image -->
+      <div class="gallery" id="gallery">
+        <div class="gallery__main">
+          <img src="" alt="" id="galleryMain" fetchpriority="high" />
+          <button class="gallery__expand" id="galleryExpandBtn" aria-label="View all photos">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.5" fill="none">
+              <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect>
+            </svg>
+            View All Photos
+          </button>
+        </div>
+        <div class="gallery__thumbs" id="galleryThumbs"></div>
+      </div>
+    </section>
+
+    <!-- ======= PROPERTY CONTENT ======= -->
+    <section class="prop-body">
+      <div class="container">
+        <div class="prop-layout">
+
+          <!-- LEFT: Details -->
+          <div class="prop-detail">
+
+            <!-- Title & Status -->
+            <div class="prop-detail__head reveal">
+              <div class="prop-detail__meta-row">
+                <span class="card__status prop-detail__status" id="propStatus"></span>
+                <span class="prop-detail__loc" id="propLoc"></span>
+              </div>
+              <h1 class="prop-detail__title" id="propName"></h1>
+              <p class="prop-detail__price" id="propPrice">
+                <button class="price__emi-btn" id="emiOpenBtn" title="Calculate EMI">
+                  <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="1.5" fill="none">
+                    <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                    <line x1="2" y1="10" x2="22" y2="10"></line>
+                  </svg>
+                  Calculate EMI
+                </button>
+              </p>
+            </div>
+
+            <!-- Key Facts -->
+            <ul class="prop-facts reveal" id="propFacts">
+              <!-- rendered by JS -->
+            </ul>
+
+            <!-- RERA Info -->
+            <div class="prop-rera reveal" id="propReraBlock">
+              <span class="prop-rera__label">RERA Registration</span>
+              <span class="prop-rera__num" id="propRera"></span>
+              <span class="prop-rera__note">Verified on UP-RERA portal</span>
+            </div>
+
+            <!-- Description -->
+            <div class="prop-desc reveal">
+              <h2 class="prop-desc__heading">About This Property</h2>
+              <p class="prop-desc__body" id="propDesc"></p>
+            </div>
+
+            <!-- Amenities -->
+            <div class="prop-amenities reveal" id="propAmenitiesBlock">
+              <h2 class="prop-desc__heading">Amenities</h2>
+              <ul class="amenities-list" id="propAmenities"></ul>
+            </div>
+
+            <!-- Floor Plan -->
+            <div class="prop-floorplan reveal" id="propFloorplanBlock">
+              <h2 class="prop-desc__heading">Floor Plan</h2>
+              <div class="floorplan__img-wrap">
+                <img src="" alt="Floor plan" id="propFloorplan" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- Map -->
+            <div class="prop-map-section reveal">
+              <h2 class="prop-desc__heading">Location &amp; Neighbourhood</h2>
+              <div id="propMap" class="prop-map"></div>
+              <div class="prop-nearby" id="propNearby"></div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT: Sticky Enquiry Sidebar -->
+          <aside class="prop-sidebar">
+            <div class="prop-sidebar__card reveal">
+              <p class="prop-sidebar__label">Enquire about this property</p>
+              <p class="prop-sidebar__name" id="sidebarName"></p>
+              <p class="prop-sidebar__price" id="sidebarPrice"></p>
+
+              <form class="form prop-sidebar__form" id="propEnquiryForm" novalidate>
+                <div class="form__field">
+                  <label class="form__label" for="pName">Full name</label>
+                  <input class="form__input" type="text" id="pName" name="pName" autocomplete="name" placeholder="Eleanor Hale" />
+                  <p class="form__error" data-error="pName"></p>
+                </div>
+                <div class="form__field">
+                  <label class="form__label" for="pEmail">Email</label>
+                  <input class="form__input" type="email" id="pEmail" name="pEmail" autocomplete="email" placeholder="you@example.com" />
+                  <p class="form__error" data-error="pEmail"></p>
+                </div>
+                <div class="form__field">
+                  <label class="form__label" for="pPhone">Phone (WhatsApp preferred)</label>
+                  <input class="form__input" type="tel" id="pPhone" name="pPhone" autocomplete="tel" placeholder="+91 98765 43210" />
+                  <p class="form__error" data-error="pPhone"></p>
+                </div>
+                <div class="form__field">
+                  <label class="form__label" for="pMsg">Message</label>
+                  <textarea class="form__input form__input--area" id="pMsg" name="pMsg" rows="3" placeholder="I'd like to arrange a private viewing…"></textarea>
+                  <p class="form__error" data-error="pMsg"></p>
+                </div>
+                <button class="btn btn--solid prop-sidebar__submit" type="submit" id="propFormSubmit">Request Private Viewing</button>
+                <p class="form__success" id="propFormStatus" role="status"></p>
+              </form>
+
+              <!-- WhatsApp shortcut -->
+              <a id="propWhatsAppBtn" href="#" target="_blank" rel="noopener" class="prop-sidebar__whatsapp">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Chat on WhatsApp
+              </a>
+            </div>
+
+            <!-- Agent card -->
+            <div class="prop-agent reveal">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80" alt="Your Advisor" class="prop-agent__img" loading="lazy" />
+              <div class="prop-agent__info">
+                <span class="prop-agent__name">Arjun Mehta</span>
+                <span class="prop-agent__role">Senior Estate Advisor</span>
+                <a href="tel:+915222890730" class="prop-agent__phone">+91 522 2890730</a>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= LIGHTBOX ======= -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo gallery" hidden>
+    <button class="lightbox__close" id="lightboxClose" aria-label="Close gallery">✕</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
+    <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next photo">›</button>
+    <div class="lightbox__img-wrap">
+      <img src="" alt="" id="lightboxImg" />
+    </div>
+    <p class="lightbox__counter" id="lightboxCounter"></p>
+    <div class="lightbox__strip" id="lightboxStrip"></div>
+  </div>
+
+  <!-- ======= EMI CALCULATOR MODAL ======= -->
+  <div class="modal-overlay" id="emiOverlay" hidden>
+    <div class="modal emi-modal" role="dialog" aria-modal="true" aria-labelledby="emiModalTitle">
+      <button class="modal__close" id="emiClose" aria-label="Close EMI calculator">✕</button>
+      <h2 class="modal__title" id="emiModalTitle">EMI Calculator</h2>
+      <p class="modal__subtitle" id="emiPropertyName"></p>
+
+      <div class="emi-form">
+        <div class="emi-field">
+          <div class="emi-field__head">
+            <label class="emi-field__label" for="emiPrice">Property Price</label>
+            <span class="emi-field__val" id="emiPriceVal">—</span>
+          </div>
+          <p class="emi-field__fixed" id="emiPriceFixed"></p>
+        </div>
+
+        <div class="emi-field">
+          <div class="emi-field__head">
+            <label class="emi-field__label" for="emiDown">Down Payment</label>
+            <span class="emi-field__val" id="emiDownVal">20%</span>
+          </div>
+          <input type="range" class="emi-slider" id="emiDown" min="10" max="50" value="20" step="5" aria-label="Down payment percentage" />
+          <div class="emi-slider__labels"><span>10%</span><span>50%</span></div>
+        </div>
+
+        <div class="emi-field">
+          <div class="emi-field__head">
+            <label class="emi-field__label" for="emiRate">Interest Rate (p.a.)</label>
+            <span class="emi-field__val" id="emiRateVal">8.5%</span>
+          </div>
+          <input type="range" class="emi-slider" id="emiRate" min="6" max="14" value="8.5" step="0.5" aria-label="Interest rate" />
+          <div class="emi-slider__labels"><span>6%</span><span>14%</span></div>
+        </div>
+
+        <div class="emi-field">
+          <div class="emi-field__head">
+            <label class="emi-field__label" for="emiTenure">Loan Tenure</label>
+            <span class="emi-field__val" id="emiTenureVal">20 years</span>
+          </div>
+          <input type="range" class="emi-slider" id="emiTenure" min="5" max="30" value="20" step="5" aria-label="Loan tenure" />
+          <div class="emi-slider__labels"><span>5 yr</span><span>30 yr</span></div>
+        </div>
+      </div>
+
+      <div class="emi-result">
+        <div class="emi-result__item">
+          <span class="emi-result__label">Loan Amount</span>
+          <span class="emi-result__val" id="emiLoanAmt"></span>
+        </div>
+        <div class="emi-result__item emi-result__item--highlight">
+          <span class="emi-result__label">Monthly EMI</span>
+          <span class="emi-result__val" id="emiMonthly"></span>
+        </div>
+        <div class="emi-result__item">
+          <span class="emi-result__label">Total Interest</span>
+          <span class="emi-result__val" id="emiTotalInterest"></span>
+        </div>
+        <div class="emi-result__item">
+          <span class="emi-result__label">Total Payable</span>
+          <span class="emi-result__val" id="emiTotalPayable"></span>
+        </div>
+      </div>
+
+      <a href="index.html#contact" class="btn btn--solid emi-cta">Speak with a Finance Advisor</a>
+      <p class="emi-disclaimer">Estimates only. Rates vary by lender. Contact us for pre-approved loan assistance.</p>
+    </div>
+  </div>
+
+  <!-- ======= WHATSAPP FLOATING BUTTON ======= -->
+  <a href="https://wa.me/915222890730?text=Hello%20Meridian%20%26%20Co.%2C%20I%20am%20interested%20in%20a%20property."
+     class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
+     id="whatsappFab">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span class="whatsapp-fab__label">Chat</span>
+  </a>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <span class="brand__name">Meridian &amp; Co.</span>
+          <span class="brand__tag">Estate Brokerage</span>
+          <p class="footer__note">Cultivating exceptional homes and the people who live in them since 1998.</p>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Explore</h4>
+          <a href="index.html#properties" class="footer__link">The Collection</a>
+          <a href="lands.html" class="footer__link">Lands &amp; Plots</a>
+          <a href="guides.html" class="footer__link">Guides</a>
+          <a href="index.html#about" class="footer__link">The Firm</a>
+          <a href="index.html#contact" class="footer__link">Book a Tour</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Contact</h4>
+          <a href="tel:+915222890730" class="footer__link">+91 522 2890730</a>
+          <a href="mailto:contact@meridianandco.in" class="footer__link">contact@meridianandco.in</a>
+          <span class="footer__link footer__link--flat">Kursi Road, Dasauli, Lucknow</span>
+        </div>
+      </div>
+      <div class="footer__base">
+        <p>© <span id="year"></span> Meridian &amp; Co. All rights reserved.</p>
+        <p>Photography courtesy of Unsplash.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN2/WQ=" crossorigin=""></script>
+  <script src="js/property.js"></script>
+</body>
+</html>
