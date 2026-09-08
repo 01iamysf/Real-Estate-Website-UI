@@ -232,11 +232,16 @@
       note: "Cultivating exceptional homes and the people who live in them since 1998.",
       columns: [
         {
-          heading: "Explore",
+          heading: "Portfolio",
           links: [
             { href: "#properties", label: "The Collection" },
             { href: "lands.html", label: "Lands & Plots" },
-            { href: "guides.html", label: "Guides" },
+            { href: "guides.html", label: "Guides" }
+          ]
+        },
+        {
+          heading: "The Firm",
+          links: [
             { href: "#about", label: "The Firm" },
             { href: "#testimonials", label: "Testimonials" },
             { href: "#contact", label: "Book a Tour" }
@@ -511,6 +516,9 @@
     fill("footerBrandName", cfg.brand.name);
     fill("footerBrandTag", cfg.brand.tagline);
     fill("footerBrandBase", cfg.brand.name);
+    if (cfg.footer && cfg.footer.note) {
+      fill("footerNote", cfg.footer.note);
+    }
     document.title = cfg.brand.name + " — " + cfg.brand.tagline;
 
     /* Nav */
@@ -656,6 +664,7 @@
     /* Footer columns */
     var columns = document.getElementById("footerColumns");
     if (columns && cfg.footer) {
+      columns.innerHTML = "";
       (cfg.footer.columns || []).forEach(function (col) {
         var div = makeEl("div", "footer__col");
         var html = '<h4 class="footer__heading">' + col.heading + "</h4>";
